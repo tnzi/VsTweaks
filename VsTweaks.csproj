@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+    <!-- Icons are loose XAML that the Visual Studio image library reads with XamlReader at run time, so they are packed as Resource, not compiled to BAML. -->
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <RootNamespace>VsTweaks</RootNamespace>
+    <AssemblyName>VsTweaks</AssemblyName>
+
+    <!-- Lets Microsoft.VSSDK.BuildTools import the VSIX packaging targets and defaults for an SDK-style project. -->
+    <VSSDKBuildToolsAutoSetup>true</VSSDKBuildToolsAutoSetup>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.14.40265" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="18.5.40034" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="source.extension.vsixmanifest" SubType="Designer" />
+  </ItemGroup>
+
+  <!-- Solution Explorer: classic layout and Visual Studio 2022 folder icons -->
+  <ItemGroup>
+    <Resource Include="SolutionExplorer\FolderIcons\*.xaml" />
+    <Content Include="SolutionExplorer\ClassicFolderIcons.imagemanifest" IncludeInVSIX="true" />
+  </ItemGroup>
+
+</Project>

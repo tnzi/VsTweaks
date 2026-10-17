@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Visual Studio 2022 folder icons. Each ID matches the KnownImageIds image it replaces; the GUID must match ClassicFolderIcons.ManifestGuid. -->
+<ImageManifest xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
+  <Symbols>
+    <String Name="Resources" Value="/VsTweaks;component/SolutionExplorer/FolderIcons" />
+    <Guid Name="ClassicFolderIcons" Value="{04a16d39-f69f-48e1-8826-4e0694597a5a}" />
+    <ID Name="AddFolder" Value="67" />
+    <ID Name="CompareFolders" Value="573" />
+    <ID Name="ConvertBranchToFolder" Value="640" />
+    <ID Name="ConvertFolderToBranch" Value="641" />
+    <ID Name="DeleteFolder" Value="928" />
+    <ID Name="DocumentsFolder" Value="1010" />
+    <ID Name="DownloadFolder" Value="1027" />
+    <ID Name="FilterFolderClosed" Value="1247" />
+    <ID Name="FilterFolderOpened" Value="1248" />
+    <ID Name="FolderBottomPanel" Value="1292" />
+    <ID Name="FolderBrowserDialogControl" Value="1293" />
+    <ID Name="FolderClosed" Value="1294" />
+    <ID Name="FolderCodeAnalysis" Value="3693" />
+    <ID Name="FolderError" Value="1295" />
+    <ID Name="FolderInformation" Value="1296" />
+    <ID Name="FolderOffline" Value="1297" />
+    <ID Name="FolderOpened" Value="1298" />
+    <ID Name="FolderOpenedNoColor" Value="3769" />
+    <ID Name="FolderOpenedWarning" Value="3662" />
+    <ID Name="FolderSuppressed" Value="1299" />
+    <ID Name="FolderTopPanel" Value="1300" />
+    <ID Name="FolderWarning" Value="1301" />
+    <ID Name="HiddenFolderClosed" Value="1482" />
+    <ID Name="HiddenFolderOpened" Value="1483" />
+    <ID Name="LinkedFolderClosed" Value="1714" />
+    <ID Name="LinkedFolderOpened" Value="1715" />
+    <ID Name="MapToFolder" Value="1815" />
+    <ID Name="MemberFolderClosed" Value="1844" />
+    <ID Name="MemberFolderOpened" Value="1845" />
+    <ID Name="MissingFolderClosed" Value="3921" />
+    <ID Name="MissingFolderOpened" Value="3922" />
+    <ID Name="MoveToFolder" Value="1934" />
+    <ID Name="NewFolder" Value="2005" />
+    <ID Name="NextBookmarkInFolder" Value="2082" />
+    <ID Name="OpenFolder" Value="2162" />
+    <ID Name="OpenProjectFolder" Value="2166" />
+    <ID Name="PackageFolderClosed" Value="2211" />
+    <ID Name="PackageFolderOpened" Value="2212" />
+    <ID Name="PreviousBookmarkInFolder" Value="2393" />
+    <ID Name="PropertiesFolderClosed" Value="3875" />
+    <ID Name="PropertiesFolderOpen" Value="3876" />
+    <ID Name="ReferenceFolderClosed" Value="3753" />
+    <ID Name="ReferenceFolderOpened" Value="3754" />
+    <ID Name="RemoteFolder" Value="3840" />
+    <ID Name="RemoteFolderOpen" Value="3841" />
+    <ID Name="ReplaceInFolder" Value="2572" />
+    <ID Name="SamplesFolder" Value="2659" />
+    <ID Name="SearchFolderClosed" Value="2701" />
+    <ID Name="SearchFolderOpened" Value="2702" />
+    <ID Name="ShowOrHideFolder" Value="2812" />
+    <ID Name="SolutionFolderSwitch" Value="3699" />
+    <ID Name="SpecialFolderClosed" Value="2875" />
+    <ID Name="SpecialFolderOpened" Value="2876" />
+    <ID Name="SwitchFolders" Value="3011" />
+    <ID Name="TeamProjectRepositoryFolder" Value="3070" />
+    <ID Name="WebFolderOpened" Value="3676" />
+    <ID Name="WebReferenceFolder" Value="3501" />
+  </Symbols>
+  <Images>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(AddFolder)">
+      <Source Uri="$(Resources)/AddFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(CompareFolders)">
+      <Source Uri="$(Resources)/CompareFolders.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(ConvertBranchToFolder)">
+      <Source Uri="$(Resources)/ConvertBranchToFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(ConvertFolderToBranch)">
+      <Source Uri="$(Resources)/ConvertFolderToBranch.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(DeleteFolder)">
+      <Source Uri="$(Resources)/DeleteFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(DocumentsFolder)">
+      <Source Uri="$(Resources)/DocumentsFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(DownloadFolder)">
+      <Source Uri="$(Resources)/DownloadFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FilterFolderClosed)">
+      <Source Uri="$(Resources)/FilterFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FilterFolderOpened)">
+      <Source Uri="$(Resources)/FilterFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderBottomPanel)">
+      <Source Uri="$(Resources)/FolderBottomPanel.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderBrowserDialogControl)">
+      <Source Uri="$(Resources)/FolderBrowserDialogControl.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderClosed)">
+      <Source Uri="$(Resources)/FolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderCodeAnalysis)">
+      <Source Uri="$(Resources)/FolderCodeAnalysis.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderError)">
+      <Source Uri="$(Resources)/FolderError.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderInformation)">
+      <Source Uri="$(Resources)/FolderInformation.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderOffline)">
+      <Source Uri="$(Resources)/FolderOffline.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderOpened)">
+      <Source Uri="$(Resources)/FolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderOpenedNoColor)">
+      <Source Uri="$(Resources)/FolderOpenedNoColor.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderOpenedWarning)">
+      <Source Uri="$(Resources)/FolderOpenedWarning.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderSuppressed)">
+      <Source Uri="$(Resources)/FolderSuppressed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderTopPanel)">
+      <Source Uri="$(Resources)/FolderTopPanel.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(FolderWarning)">
+      <Source Uri="$(Resources)/FolderWarning.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(HiddenFolderClosed)">
+      <Source Uri="$(Resources)/HiddenFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(HiddenFolderOpened)">
+      <Source Uri="$(Resources)/HiddenFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(LinkedFolderClosed)">
+      <Source Uri="$(Resources)/LinkedFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(LinkedFolderOpened)">
+      <Source Uri="$(Resources)/LinkedFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(MapToFolder)">
+      <Source Uri="$(Resources)/MapToFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(MemberFolderClosed)">
+      <Source Uri="$(Resources)/MemberFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(MemberFolderOpened)">
+      <Source Uri="$(Resources)/MemberFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(MissingFolderClosed)">
+      <Source Uri="$(Resources)/MissingFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(MissingFolderOpened)">
+      <Source Uri="$(Resources)/MissingFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(MoveToFolder)">
+      <Source Uri="$(Resources)/MoveToFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(NewFolder)">
+      <Source Uri="$(Resources)/NewFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(NextBookmarkInFolder)">
+      <Source Uri="$(Resources)/NextBookmarkInFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(OpenFolder)">
+      <Source Uri="$(Resources)/OpenFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(OpenProjectFolder)">
+      <Source Uri="$(Resources)/OpenProjectFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(PackageFolderClosed)">
+      <Source Uri="$(Resources)/PackageFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(PackageFolderOpened)">
+      <Source Uri="$(Resources)/PackageFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(PreviousBookmarkInFolder)">
+      <Source Uri="$(Resources)/PreviousBookmarkInFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(PropertiesFolderClosed)">
+      <Source Uri="$(Resources)/PropertiesFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(PropertiesFolderOpen)">
+      <Source Uri="$(Resources)/PropertiesFolderOpen.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(ReferenceFolderClosed)">
+      <Source Uri="$(Resources)/ReferenceFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(ReferenceFolderOpened)">
+      <Source Uri="$(Resources)/ReferenceFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(RemoteFolder)">
+      <Source Uri="$(Resources)/RemoteFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(RemoteFolderOpen)">
+      <Source Uri="$(Resources)/RemoteFolderOpen.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(ReplaceInFolder)">
+      <Source Uri="$(Resources)/ReplaceInFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SamplesFolder)">
+      <Source Uri="$(Resources)/SamplesFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SearchFolderClosed)">
+      <Source Uri="$(Resources)/SearchFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SearchFolderOpened)">
+      <Source Uri="$(Resources)/SearchFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(ShowOrHideFolder)">
+      <Source Uri="$(Resources)/ShowOrHideFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SolutionFolderSwitch)">
+      <Source Uri="$(Resources)/SolutionFolderSwitch.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SpecialFolderClosed)">
+      <Source Uri="$(Resources)/SpecialFolderClosed.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SpecialFolderOpened)">
+      <Source Uri="$(Resources)/SpecialFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(SwitchFolders)">
+      <Source Uri="$(Resources)/SwitchFolders.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(TeamProjectRepositoryFolder)">
+      <Source Uri="$(Resources)/TeamProjectRepositoryFolder.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(WebFolderOpened)">
+      <Source Uri="$(Resources)/WebFolderOpened.xaml" />
+    </Image>
+    <Image Guid="$(ClassicFolderIcons)" ID="$(WebReferenceFolder)">
+      <Source Uri="$(Resources)/WebReferenceFolder.xaml" />
+    </Image>
+  </Images>
+</ImageManifest>

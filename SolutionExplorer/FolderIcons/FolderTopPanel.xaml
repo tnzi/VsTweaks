@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <Canvas Background="#00FFFFFF" Width="16" Height="16">
+    <Grid Opacity="0.75">
+      <Path Data="F1 M14.5,9 L15,8.5 L15,13.5 L14.5,14 L1.5,14 L1,13.5 L1,8.5 L1.5,9 L2,9 L2,13 L14,13 L14,9 L14.5,9" Fill="#B27D00" />
+    </Grid>
+    <Grid Opacity="0.75">
+      <Path Data="F1 M14.5,3.5 L14.5,8.5 L1.5,8.5 L1.5,2.5 L6.5,2.5 L7.5,3.5 L14.5,3.5" Fill="#B27D00" />
+    </Grid>
+    <Path Data="M14.5,3 L7.707,3 L6.854,2.146 L6.5,2 L1.5,2 L1,2.5 L1,8.5 L1.5,9 L14.5,9 L15,8.5 L15,3.5 L14.5,3 M14,8 L2,8 L2,3 L6.293,3 L7.146,3.854 L7.5,4 L14,4 L14,8" Fill="#B27D00" />
+  </Canvas>
+</Viewbox>
