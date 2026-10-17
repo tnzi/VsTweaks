@@ -1,0 +1,183 @@
+<Project>
+
+  <!--
+    Compiles every *.vstheme in this folder (Visual Studio Color Theme Designer XML) into the binary .pkgdef
+    format Visual Studio reads theme colors from, and packs each one into the VSIX under Themes\.
+    Each .pkgdef must also be listed as a Microsoft.VisualStudio.VsPackage asset in source.extension.vsixmanifest.
+  -->
+
+  <ItemGroup>
+    <VsThemeSource Include="$(MSBuildThisFileDirectory)*.vstheme" />
+  </ItemGroup>
+
+  <UsingTask TaskName="CompileVsThemes" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Sources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <OutputDirectory ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Class" Language="cs">
+<![CDATA[
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml.Linq;
+using Microsoft.Build.Framework;
+using Microsoft.Build.Utilities;
+
+public class CompileVsThemes : Task
+{
+    // Version of the serialized color table, as found in the themes that ship with Visual Studio 2026.
+    private const int ColorTableVersion = 11;
+    private const byte RawColorType = 1;   // CT_RAW
+    private const byte NoColorType = 0;    // CT_INVALID: the color is not set
+
+    [Required]
+    public ITaskItem[] Sources { get; set; }
+
+    [Required]
+    public string OutputDirectory { get; set; }
+
+    public override bool Execute()
+    {
+        Directory.CreateDirectory(OutputDirectory);
+        foreach (ITaskItem source in Sources)
+        {
+            string target = Path.Combine(OutputDirectory, Path.GetFileNameWithoutExtension(source.ItemSpec) + ".pkgdef");
+            try
+            {
+                File.WriteAllText(target, Compile(XDocument.Load(source.ItemSpec)), new UTF8Encoding(false));
+            }
+            catch (Exception ex) when (ex is FormatException || ex is InvalidDataException || ex is System.Xml.XmlException)
+            {
+                Log.LogError(null, null, null, source.ItemSpec, 0, 0, 0, 0, ex.Message);
+            }
+        }
+
+        return !Log.HasLoggedErrors;
+    }
+
+    private static string Compile(XDocument document)
+    {
+        var pkgdef = new StringBuilder();
+        foreach (XElement theme in document.Root.Elements("Theme"))
+        {
+            string name = Required(theme, "Name");
+            string themeKey = "$RootKey$\\Themes\\" + Guid.Parse(Required(theme, "GUID")).ToString("B");
+            pkgdef.AppendLine("[" + themeKey + "]");
+            // The default value is the theme's moniker, the value of environment.visualExperience.colorTheme in
+            // settings.json. Built-in themes use kebab-case ("icy-mint"), so "VsTweaks Light" becomes "vstweaks-light".
+            pkgdef.AppendLine("@=\"" + name.ToLowerInvariant().Replace(' ', '-') + "\"");
+            pkgdef.AppendLine("\"Name\"=\"" + name + "\"");
+            string fallback = (string)theme.Attribute("FallbackId");
+            if (fallback != null)
+            {
+                pkgdef.AppendLine("\"FallbackId\"=\"" + Guid.Parse(fallback).ToString("B") + "\"");
+            }
+
+            pkgdef.AppendLine();
+
+            foreach (XElement category in theme.Elements("Category"))
+            {
+                byte[] table = SerializeCategory(Guid.Parse(Required(category, "GUID")), category.Elements("Color").ToList());
+                pkgdef.AppendLine("[" + themeKey + "\\" + Required(category, "Name") + "]");
+                pkgdef.AppendLine("\"Data\"=hex:" + string.Join(",", table.Select(b => b.ToString("x2"))));
+                pkgdef.AppendLine();
+            }
+        }
+
+        return pkgdef.ToString();
+    }
+
+    // Layout: int32 total length, int32 version, int32 category count, then per category its GUID, an int32 color
+    // count and, per color, an int32-prefixed ASCII name followed by the background and the foreground. Each of
+    // those is a type byte, plus R, G, B, A bytes when the type is not CT_INVALID.
+    private static byte[] SerializeCategory(Guid category, IReadOnlyList<XElement> colors)
+    {
+        using (var stream = new MemoryStream())
+        using (var writer = new BinaryWriter(stream))
+        {
+            writer.Write(0);
+            writer.Write(ColorTableVersion);
+            writer.Write(1);
+            writer.Write(category.ToByteArray());
+            writer.Write(colors.Count);
+            foreach (XElement color in colors)
+            {
+                byte[] name = Encoding.ASCII.GetBytes(Required(color, "Name"));
+                writer.Write(name.Length);
+                writer.Write(name);
+                WriteColor(writer, color.Element("Background"));
+                WriteColor(writer, color.Element("Foreground"));
+            }
+
+            writer.Flush();
+            byte[] table = stream.ToArray();
+            BitConverter.GetBytes(table.Length).CopyTo(table, 0);
+            return table;
+        }
+    }
+
+    private static void WriteColor(BinaryWriter writer, XElement color)
+    {
+        if (color == null)
+        {
+            writer.Write(NoColorType);
+            return;
+        }
+
+        string type = Required(color, "Type");
+        if (type != "CT_RAW")
+        {
+            throw new InvalidDataException("Only Type=\"CT_RAW\" colors are supported, found \"" + type + "\".");
+        }
+
+        string source = Required(color, "Source");
+        uint argb;
+        if (source.Length != 8 || !uint.TryParse(source, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out argb))
+        {
+            throw new FormatException("Color Source must be 8 hex digits (AARRGGBB), found \"" + source + "\".");
+        }
+
+        writer.Write(RawColorType);
+        writer.Write((byte)(argb >> 16));
+        writer.Write((byte)(argb >> 8));
+        writer.Write((byte)argb);
+        writer.Write((byte)(argb >> 24));
+    }
+
+    private static string Required(XElement element, string attribute)
+    {
+        string value = (string)element.Attribute(attribute);
+        if (string.IsNullOrEmpty(value))
+        {
+            throw new InvalidDataException("<" + element.Name + "> is missing the " + attribute + " attribute.");
+        }
+
+        return value;
+    }
+}
+]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="CompileVsThemes"
+          BeforeTargets="BeforeBuild"
+          Inputs="@(VsThemeSource);$(MSBuildThisFileFullPath)"
+          Outputs="@(VsThemeSource->'$(IntermediateOutputPath)Themes\%(Filename).pkgdef')">
+    <CompileVsThemes Sources="@(VsThemeSource)" OutputDirectory="$(IntermediateOutputPath)Themes" />
+  </Target>
+
+  <!-- Runs even when CompileVsThemes is skipped as up to date, so the VSIX always picks the .pkgdef files up. -->
+  <Target Name="IncludeCompiledVsThemes" AfterTargets="CompileVsThemes" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <Content Include="@(VsThemeSource->'$(IntermediateOutputPath)Themes\%(Filename).pkgdef')" IncludeInVSIX="true" VSIXSubPath="Themes" />
+      <FileWrites Include="@(VsThemeSource->'$(IntermediateOutputPath)Themes\%(Filename).pkgdef')" />
+    </ItemGroup>
+  </Target>
+
+</Project>

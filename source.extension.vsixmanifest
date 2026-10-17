@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="VsTweaks.f17b4464-eb15-47e4-ac22-311bdd33f9e9" Version="1.0.0" Language="en-US" Publisher="TuanZi" />
+    <Identity Id="VsTweaks.f17b4464-eb15-47e4-ac22-311bdd33f9e9" Version="1.0.2" Language="en-US" Publisher="TuanZi" />
     <DisplayName>VsTweaks</DisplayName>
-    <Description xml:space="preserve">Personal tweaks for Visual Studio 2026. Currently: restores the Visual Studio 2022 look of Solution Explorer (18 px indentation per level, compact rows, triangle expanders, filled folder icons).</Description>
+    <Description xml:space="preserve">Personal tweaks for Visual Studio 2026: the Visual Studio 2022 look of Solution Explorer (18 px indentation per level, compact rows, triangle expanders), filled Visual Studio 2022 folder icons everywhere, and the VsTweaks Light theme.</Description>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[18.0,19.0)">
@@ -21,6 +21,7 @@
   </Prerequisites>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    <Asset Type="Microsoft.VisualStudio.ImageManifest" d:Source="File" Path="SolutionExplorer\ClassicFolderIcons.imagemanifest" />
+    <Asset Type="Microsoft.VisualStudio.ImageManifest" d:Source="File" Path="FolderIcons\ClassicFolderIcons.imagemanifest" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Themes\VsTweaksLight.pkgdef" />
   </Assets>
 </PackageManifest>

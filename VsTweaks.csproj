@@ -23,10 +23,13 @@
     <None Include="source.extension.vsixmanifest" SubType="Designer" />
   </ItemGroup>
 
-  <!-- Solution Explorer: classic layout and Visual Studio 2022 folder icons -->
+  <!-- Folder icons: Visual Studio 2022 artwork -->
   <ItemGroup>
-    <Resource Include="SolutionExplorer\FolderIcons\*.xaml" />
-    <Content Include="SolutionExplorer\ClassicFolderIcons.imagemanifest" IncludeInVSIX="true" />
+    <Resource Include="FolderIcons\Images\*.xaml" />
+    <Content Include="FolderIcons\ClassicFolderIcons.imagemanifest" IncludeInVSIX="true" />
   </ItemGroup>
+
+  <!-- Themes: *.vstheme files compiled to .pkgdef -->
+  <Import Project="Themes\Themes.targets" />
 
 </Project>

@@ -3,7 +3,9 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
+using VsTweaks.FolderIcons;
 using VsTweaks.SolutionExplorer;
+using VsTweaks.Themes;
 using Task = System.Threading.Tasks.Task;
 
 namespace VsTweaks
@@ -23,19 +25,32 @@ namespace VsTweaks
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-            StartClassicSolutionExplorer();
-        }
-
-        private static void StartClassicSolutionExplorer()
-        {
-            if (!ShellTreeInternals.TryResolve(out ShellTreeInternals internals, out string error))
+            // Solution Explorer's layout and the folder icons in tree rows both work on Visual Studio's tree control.
+            if (ShellTreeInternals.TryResolve(out ShellTreeInternals shellTree, out string shellTreeError))
             {
-                // If Visual Studio changes its internals, the feature simply stays off; the IDE itself is unaffected.
-                ActivityLog.LogWarning(nameof(VsTweaks), error);
-                return;
+                new SolutionExplorerRestyler(shellTree).Start();
+                new TreeRowFolderIcons(shellTree).Start();
+            }
+            else
+            {
+                LogFeatureOff(shellTreeError);
             }
 
-            new SolutionExplorerRestyler(internals).Start();
+            StartOrLog(CrispImageFolderIcons.TryStart);
+            StartOrLog(NeutralFrameBorders.TryStart);
         }
+
+        private delegate bool TryStartFeature(out string error);
+
+        private static void StartOrLog(TryStartFeature tryStart)
+        {
+            if (!tryStart(out string error))
+            {
+                LogFeatureOff(error);
+            }
+        }
+
+        // A feature whose Visual Studio internals changed simply stays off; the IDE itself is unaffected.
+        private static void LogFeatureOff(string reason) => ActivityLog.LogWarning(nameof(VsTweaks), reason);
     }
 }

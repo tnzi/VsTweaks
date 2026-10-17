@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Windows;
 using Microsoft.VisualStudio.Shell;
 
-namespace VsTweaks.SolutionExplorer
+namespace VsTweaks
 {
     /// <summary>
     /// Solution Explorer's tree is an internal Visual Studio control with no public extensibility point.

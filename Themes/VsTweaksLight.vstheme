@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  VsTweaks Light: the Visual Studio 2026 Light theme with a few colors changed.
+  Every color not listed here falls back to Light (FallbackId). Colors are AARRGGBB.
+  Same XML format as the Visual Studio Color Theme Designer; compiled to a .pkgdef at build time by Themes.targets.
+
+  Brightness steps, from content outwards:
+    content      editor #FFFFFF, tool window body #F9F9F9 (Light's values, unchanged)
+    panels       tab strips, toolbar trays, tool window title rows #EDEDED
+    environment  window background and the gutters between panels #E6E6E6
+  In Light the panels sit at #F7F7F7 to #F9F9F9, almost the same as the content next to them, and a tool window's
+  title row is exactly the color of its body.
+-->
+<Themes>
+  <Theme Name="VsTweaks Light" GUID="{4de3dc98-3f01-4876-87cd-2045a234d92a}" FallbackId="{de3dbbcd-f642-433c-8353-8f1df4370aba}">
+    <Category Name="ShellInternal" GUID="{5af241b7-5627-4d12-bfb1-2b67d11127d7}">
+      <!-- Border of the active main window and, through NeutralFrameBorders, of the active document or tool window
+           and its tab. Light uses the indigo accent (#5649B0); a neutral gray a little darker than inactive frames
+           (EnvironmentBorderInactive, #ADADAD) keeps a quiet hint of focus. -->
+      <Color Name="EnvironmentBorder">
+        <Background Type="CT_RAW" Source="FF9A9A9A" />
+      </Color>
+      <!-- Title bar, menu bar and the area behind the toolbars. Light: #EEEEEE. -->
+      <Color Name="EnvironmentBackground">
+        <Background Type="CT_RAW" Source="FFE6E6E6" />
+      </Color>
+      <!-- Gutters around and between docked windows. Light: #EEEEEE. -->
+      <Color Name="EnvironmentBody">
+        <Background Type="CT_RAW" Source="FFE6E6E6" />
+      </Color>
+      <!-- Toolbar trays and the document and tool window tab strips. Light: half-transparent white (#FFFFFF80),
+           about #F7F7F7 over its background. -->
+      <Color Name="EnvironmentLayeredBackground">
+        <Background Type="CT_RAW" Source="FFEDEDED" />
+      </Color>
+      <!-- Tool window title rows, active and inactive. Light: #F9F9F9, the same as the tool window body. -->
+      <Color Name="EnvironmentHeader">
+        <Background Type="CT_RAW" Source="FFEDEDED" />
+      </Color>
+      <Color Name="EnvironmentHeaderInactive">
+        <Background Type="CT_RAW" Source="FFEDEDED" />
+      </Color>
+    </Category>
+  </Theme>
+</Themes>
