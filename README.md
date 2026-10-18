@@ -17,7 +17,7 @@ Visual Studio 2026 (18.x) Community, Professional or Enterprise, x64.
 
 ## Build
 
-Open `VsTweaks.csproj` in Visual Studio 2026 and build, or run:
+Open `VsTweaks.slnx` in Visual Studio 2026 and build, or run:
 
 ```
 MSBuild VsTweaks.csproj -restore -t:Rebuild -p:Configuration=Release
