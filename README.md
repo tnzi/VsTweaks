@@ -6,6 +6,7 @@ Personal tweaks for Visual Studio 2026, packaged as one extension. Each feature 
 |---|---|---|
 | Classic Solution Explorer | `SolutionExplorer\` | Restores the Visual Studio 2022 layout of Solution Explorer |
 | Classic folder icons | `FolderIcons\` | Shows the filled Visual Studio 2022 folder icons instead of the Visual Studio 2026 outlines, in every WPF window |
+| Compact Git lists | `GitWindows\` | Keeps the lists in Git Changes, Git Repository and Team Explorer at the 20 px row height of Visual Studio 2022 |
 | Themes | `Themes\` | Adds the VsTweaks Light theme and draws active window frames with the theme's border color instead of its accent |
 
 `ShellTreeInternals.cs` and `VisualTrees.cs` at the root are shared by several features.
@@ -71,6 +72,16 @@ Older windows built on native Win32 trees, such as Class View, get their icons f
 
 The XAML files in `FolderIcons\Images` are the corresponding images from the Visual Studio 2022 (17.14) image catalog, `Microsoft.VisualStudio.ImageCatalog`, unmodified. The images belong to Microsoft and are kept here for personal use only, which is why this repository is private. The official Visual Studio 2022 Image Library download is not a substitute: its versions of these icons have a much fainter fill.
 
+## Compact Git lists
+
+| | Visual Studio 2026 default | With VsTweaks |
+|---|---|---|
+| Row height in Git Changes, Git Repository and Team Explorer lists | 26 px (20 px with compact spacing) | 20 px, whatever the compact spacing setting |
+
+### How it works
+
+The Git windows are built on `Microsoft.TeamFoundation.Controls`, whose list styles bind the row height and the size of the hover buttons in each row (stage, undo and so on) to one switch, `TeamFoundationControlSizes.Instance.UseCompactSpacing`. Off, rows are at least 24 px and the hover buttons 24 px, which with the row border makes 26 px; the buttons keep their space even while hidden. On, rows are at least 20 px and the buttons 18 px. The Git package copies the compact spacing setting (`environment.visualExperience.useCompactSpacing`) to the switch at startup and whenever it changes; the feature turns the switch back on each time. Since it is Visual Studio's own compact layout, nothing else about these windows changes, and other windows keep following the setting.
+
 ## Compatibility
 
 Features that rely on Visual Studio internals look up the types and properties they need by name. If a future Visual Studio changes them, the feature stops applying instead of breaking Visual Studio, and writes a warning to the ActivityLog (produced when Visual Studio is started with `devenv /log`).
@@ -84,11 +95,11 @@ Visual Studio 2026 Light with a few colors changed. Select it under **Tools > Op
 | Area (`ShellInternal` color) | Light | VsTweaks Light |
 |---|---|---|
 | Active window frame and tab (`EnvironmentBorder`) | Indigo accent, `#5649B0` | Neutral gray, `#9A9A9A`; inactive frames stay `#ADADAD` |
-| Tab strips and toolbar trays (`EnvironmentLayeredBackground`) | Half-transparent white, about `#F7F7F7` | `#EDEDED` |
-| Tool window title rows (`EnvironmentHeader`, `EnvironmentHeaderInactive`) | `#F9F9F9`, the same as the tool window body | `#EDEDED` |
-| Title bar, menu bar, toolbar area (`EnvironmentBackground`) and gutters between windows (`EnvironmentBody`) | `#EEEEEE` | `#E6E6E6` |
+| Tab strips and toolbar trays (`EnvironmentLayeredBackground`) | Half-transparent white, about `#F7F7F7` | `#DADADA` |
+| Tool window title rows (`EnvironmentHeader`, `EnvironmentHeaderInactive`) | `#F9F9F9`, the same as the tool window body | `#DADADA` |
+| Title bar, menu bar, toolbar area (`EnvironmentBackground`) and gutters between windows (`EnvironmentBody`) | `#EEEEEE` | `#CCCCCC` |
 
-Content keeps Light's colors (editor `#FFFFFF`, tool window bodies `#F9F9F9`), so the result is three clear brightness steps: content, then the panels around it, then the environment. Every color not listed falls back to Light.
+Content keeps Light's colors (editor `#FFFFFF`, tool window bodies `#F9F9F9`), so the result is three clear brightness steps: content, then the darker panels around it, then the darker still environment. The content areas stand out from everything around them at a glance. Every color not listed falls back to Light.
 
 ### How themes are built
 

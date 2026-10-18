@@ -4,6 +4,7 @@ using System.Threading;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using VsTweaks.FolderIcons;
+using VsTweaks.GitWindows;
 using VsTweaks.SolutionExplorer;
 using VsTweaks.Themes;
 using Task = System.Threading.Tasks.Task;
@@ -38,6 +39,7 @@ namespace VsTweaks
 
             StartOrLog(CrispImageFolderIcons.TryStart);
             StartOrLog(NeutralFrameBorders.TryStart);
+            CompactListRows.Start(JoinableTaskFactory);
         }
 
         private delegate bool TryStartFeature(out string error);

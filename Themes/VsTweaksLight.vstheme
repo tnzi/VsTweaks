@@ -6,10 +6,11 @@
 
   Brightness steps, from content outwards:
     content      editor #FFFFFF, tool window body #F9F9F9 (Light's values, unchanged)
-    panels       tab strips, toolbar trays, tool window title rows #EDEDED
-    environment  window background and the gutters between panels #E6E6E6
+    panels       tab strips, toolbar trays, tool window title rows #DADADA
+    environment  window background and the gutters between panels #CCCCCC
   In Light the panels sit at #F7F7F7 to #F9F9F9, almost the same as the content next to them, and a tool window's
-  title row is exactly the color of its body.
+  title row is exactly the color of its body. Here everything around the content is clearly darker, so the content
+  areas stand out at a glance.
 -->
 <Themes>
   <Theme Name="VsTweaks Light" GUID="{4de3dc98-3f01-4876-87cd-2045a234d92a}" FallbackId="{de3dbbcd-f642-433c-8353-8f1df4370aba}">
@@ -22,23 +23,23 @@
       </Color>
       <!-- Title bar, menu bar and the area behind the toolbars. Light: #EEEEEE. -->
       <Color Name="EnvironmentBackground">
-        <Background Type="CT_RAW" Source="FFE6E6E6" />
+        <Background Type="CT_RAW" Source="FFCCCCCC" />
       </Color>
       <!-- Gutters around and between docked windows. Light: #EEEEEE. -->
       <Color Name="EnvironmentBody">
-        <Background Type="CT_RAW" Source="FFE6E6E6" />
+        <Background Type="CT_RAW" Source="FFCCCCCC" />
       </Color>
       <!-- Toolbar trays and the document and tool window tab strips. Light: half-transparent white (#FFFFFF80),
            about #F7F7F7 over its background. -->
       <Color Name="EnvironmentLayeredBackground">
-        <Background Type="CT_RAW" Source="FFEDEDED" />
+        <Background Type="CT_RAW" Source="FFDADADA" />
       </Color>
       <!-- Tool window title rows, active and inactive. Light: #F9F9F9, the same as the tool window body. -->
       <Color Name="EnvironmentHeader">
-        <Background Type="CT_RAW" Source="FFEDEDED" />
+        <Background Type="CT_RAW" Source="FFDADADA" />
       </Color>
       <Color Name="EnvironmentHeaderInactive">
-        <Background Type="CT_RAW" Source="FFEDEDED" />
+        <Background Type="CT_RAW" Source="FFDADADA" />
       </Color>
     </Category>
   </Theme>
